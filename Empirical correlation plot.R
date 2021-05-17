@@ -106,17 +106,11 @@ melted_mat <- reshape2::melt(cordat)
 ggplot(data = melted_mat, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white", aes(y = reorder(Var2, desc(Var2)))) + labs(x = "", y = "") +
   scale_fill_gradient2(low = "blue", high = "red", "Corr", mid = "white", midpoint = 0) +
-  theme(axis.text = element_text(size = 7), axis.title = element_text(size = 10), legend.position = "none") + 
+  theme(axis.text = element_text(size = 7), axis.title = element_text(size = 10)) + 
   scale_x_discrete(labels= rep(0:10, 5)) + 
-  scale_y_discrete(labels= rep(0:10, 5)) 
-
-# plot with corr labels
-ggplot(data = melted_mat, aes(x=Var1, y=Var2, fill=value, label = round(value, 2))) + 
-  geom_tile(color = "white", aes(y = reorder(Var2, desc(Var2)))) + labs(x = "", y = "") +
-  scale_fill_gradient2(low = "blue", high = "red", "Corr", mid = "white", midpoint = 0) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1), axis.text=element_text(size=8)) + 
-  geom_text(colour = "black", size = 1.5, aes(y = reorder(Var2, desc(Var2))))
-
+  scale_y_discrete(labels= rep(10:0, 5)) +
+  labs(x = "pFVC                 pDLCO                 EF                  RVSP",
+       y = "pFVC                 pDLCO                 EF                  RVSP")
 
 
 
